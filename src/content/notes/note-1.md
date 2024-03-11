@@ -1,8 +1,8 @@
 ---
 title: "Note 1"
 isDraft: false
-publishDate: 2022-01-12T00:00:00.000Z 
-updatedDate: 2022-01-12T00:00:00.000Z
+publishDate: "2022-03-10T23:00:00-06:00"
+updatedDate: "2022-03-10T23:00:00-06:00"
 ---
 
 # This is a test
