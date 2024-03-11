@@ -1,13 +1,12 @@
 ---
 
 const home_active = Astro.url.pathname === '/';
-const about_active = Astro.url.pathname === '/about';
-const projects_active = Astro.url.pathname === '/projects';
-const notes_active = Astro.url.pathname === '/notes'; // TODO: Check if the URL *starts* with '/notes' since that's the base URI
+const about_active = Astro.url.pathname.startsWith('/about');
+const projects_active = Astro.url.pathname.startsWith('/projects');
+const notes_active = Astro.url.pathname.startsWith('/notes');
 ---
 
 <nav>
-    <p>current pathname: {Astro.url.pathname}</p>
     <ul class="flex flex-row md:flex-col justify-around">
         <li><a href="/" class:list={[{active: home_active}]} aria-current={home_active ? 'page' : false}>home</a></li>
         <li><a href="/about" class:list={[{active: about_active}]} aria-current={about_active ? 'page' : false}>about</a></li>
