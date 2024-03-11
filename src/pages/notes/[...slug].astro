@@ -1,16 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from '../../layouts/Layout.astro';
-import type { CollectionEntry } from "astro:content";
-
-interface Props {
-    entry: CollectionEntry<'notes'>
-}
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
     // Only compile those that are not drafts
-    const notes = await getCollection('notes', ({ data }: CollectionEntry<'notes'>) => {
+    const notes = await getCollection('notes', ({ data }) => {
         return import.meta.env.PROD ? data.isDraft !== true : true;
     });
 
@@ -24,6 +19,7 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={`Notes - ${entry.data.title}`}>
-    <a href="/notes">{`<-`} Back to notes</a>
-    <Content />
+    <article class="prose xl:prose-xl prose-headings:my-0 prose-p:mb-2 prose-p:mt-0 prose-strong:font-bold prose-li:my-0 prose-ul:my-0 prose-ol:my-0 prose-blockquote:my-4 prose-pre:my-2 min-w-full">
+        <Content />
+    </article>
 </Layout>

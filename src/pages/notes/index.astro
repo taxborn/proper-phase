@@ -14,6 +14,7 @@ const notes = (await getCollection('notes', ({ data }) => {
 
 	<ul>
 		{notes.map(entry => (
+			// TODO: Figure out how to force this to parse as CST/CDT?
 			<li><a href={`/notes/${entry.slug}`}>{entry.data.title} - {entry.data.publishDate.toLocaleString()}</a></li>
 		))}
 	</ul>
