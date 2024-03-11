@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 
+import Navbar from '../components/Navbar.astro';
+
 const { title } = Astro.props;
 ---
 
@@ -14,7 +16,12 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>Braxton Fair | {title}</title>
     </head>
-    <body>
-       <slot /> 
+    <body>	
+		<div class="flex flex-col md:flex-row">
+			<Navbar />
+			<div class="flex-1 p-4">
+				<slot /> 
+			</div>	
+		</div>
     </body>
 </html>
