@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 
 // Only get those that are not drafts (except if we are local)
 const notes = await getCollection('notes', ({ data }) => {
-	return import.meta.env.PROD ? data.draft !== true : true;
+	return import.meta.env.PROD ? data.isDraft !== true : true;
 });
 ---
 

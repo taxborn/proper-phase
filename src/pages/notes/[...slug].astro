@@ -6,7 +6,7 @@ import Layout from '../../layouts/Layout.astro';
 export async function getStaticPaths() {
     // Only compile those that are not drafts
     const notes = await getCollection('notes', ({ data }) => {
-        return import.meta.env.PROD ? data.draft !== true : true;
+        return import.meta.env.PROD ? data.isDraft !== true : true;
     });
 
     return notes.map(entry => ({
@@ -19,6 +19,6 @@ const { Content } = await entry.render();
 ---
 
 <Layout title={`Notes - ${entry.data.title}`}>
-    <a href="/notes"><- Back to notes</a>
+    <a href="/notes">{`<-`} Back to notes</a>
     <Content />
 </Layout>
