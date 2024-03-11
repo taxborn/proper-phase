@@ -1,7 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+
+// Only get those that are not drafts (except if we are local)
+const notes = await getCollection('notes', ({ data }) => {
+	return import.meta.env.PROD ? data.draft !== true : true;
+});
 ---
 
 <Layout title="Home">
 	<h1>My Garden</h1>
+
+	<ul>
+		{notes.map(entry => (
+			<li><a href={`/notes/${entry.slug}`}>{entry.data.title}</a></li>
+		))}
+	</ul>
 </Layout>
