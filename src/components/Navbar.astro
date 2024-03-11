@@ -8,10 +8,10 @@ const notes_active = Astro.url.pathname === '/notes'; // TODO: Check if the URL 
 
 <nav>
     <ul class="flex flex-row md:flex-col justify-around">
-        <li><a href="/" class:list={[{active: home_active}]}>home</a></li>
-        <li><a href="/about" class:list={[{active: about_active}]}>about</a></li>
-        <li><a href="/projects" class:list={[{active: projects_active}]}>projects</a></li>
-        <li><a href="/notes" class:list={[{active: notes_active}]}>notes</a></li>
+        <li><a href="/" class:list={[{active: home_active}]} aria-current={home_active ? 'page' : false}>home</a></li>
+        <li><a href="/about" class:list={[{active: about_active}]} aria-current={about_active ? 'page' : false}>about</a></li>
+        <li><a href="/projects" class:list={[{active: projects_active}]} aria-current={projects_active ? 'page' : false}>projects</a></li>
+        <li><a href="/notes" class:list={[{active: notes_active}]} aria-current={notes_active ? 'page' : false}>notes</a></li>
     </ul>
 </nav>
 
