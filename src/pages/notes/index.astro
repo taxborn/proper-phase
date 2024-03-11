@@ -14,7 +14,7 @@ const notes = (await getCollection('notes', ({ data }) => {
 
 	<ul>
 		{notes.map(entry => (
-			<li><a href={`/notes/${entry.slug}`}>{entry.data.title} - {entry.data.publishDate.toString()}</a></li>
+			<li><a href={`/notes/${entry.slug}`}>{entry.data.title} - {entry.data.publishDate.toLocaleString()}</a></li>
 		))}
 	</ul>
 </Layout>
