@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 // Only get those that are not drafts (except if we are local), and sort by Publish Date
 const notes = (await getCollection('notes', ({ data }) => {
@@ -14,7 +15,7 @@ const notes = (await getCollection('notes', ({ data }) => {
 
 	<ul>
 		{notes.map(entry => (
-			<li><a href={`/notes/${entry.slug}`}>{entry.data.title} - {entry.data.publishDate.toLocaleString()}</a></li>
+			<li><a href={`/notes/${entry.slug}`}>{entry.data.title} - {entry.data.publishDate.toISOString()}</a></li>
 		))}
 	</ul>
 </Layout>

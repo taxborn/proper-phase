@@ -1,11 +1,16 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from '../../layouts/Layout.astro';
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    entry: CollectionEntry<'notes'>
+}
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
     // Only compile those that are not drafts
-    const notes = await getCollection('notes', ({ data }) => {
+    const notes = await getCollection('notes', ({ data }: CollectionEntry<'notes'>) => {
         return import.meta.env.PROD ? data.isDraft !== true : true;
     });
 
