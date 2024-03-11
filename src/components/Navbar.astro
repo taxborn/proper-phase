@@ -6,7 +6,7 @@ const projects_active = Astro.url.pathname === '/projects';
 const notes_active = Astro.url.pathname === '/notes'; // TODO: Check if the URL *starts* with '/notes' since that's the base URI
 ---
 
-<nav class="md:w-1/4 lg:w-1/6 w-full h-auto md:h-screen md:sticky top-0 p-8">
+<nav>
     <ul class="flex flex-row md:flex-col justify-around">
         <li><a href="/" class:list={[{active: home_active}]}>home</a></li>
         <li><a href="/about" class:list={[{active: about_active}]}>about</a></li>
@@ -17,11 +17,11 @@ const notes_active = Astro.url.pathname === '/notes'; // TODO: Check if the URL 
 
 <style>
     nav {
-        @apply bg-transparent;
+        @apply md:w-1/4 lg:w-1/6 w-full h-auto md:h-screen md:sticky top-0 p-8;
     }
 
     a {
-        @apply font-semibold text-xl hover:text-indigo-500;
+        @apply text-xl no-underline;
     }
 
     a.active {
