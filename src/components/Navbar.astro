@@ -1,12 +1,18 @@
 ---
-
 const home_active = Astro.url.pathname === '/';
 const about_active = Astro.url.pathname.startsWith('/about');
 const projects_active = Astro.url.pathname.startsWith('/projects');
 const notes_active = Astro.url.pathname.startsWith('/notes');
+
+import { Image } from 'astro:assets';
+import profile from '../images/profile.jpg';
 ---
 
 <nav>
+    <div class={`hidden ${!about_active && 'md:block'} mb-0 md:mb-2`}>
+        <!-- TODO: Fill out this alt tag -->
+        <Image src={profile} alt="test" class="rounded-md w-64" />
+    </div>
     <ul class="flex flex-row md:flex-col justify-around">
         <li><a href="/" class:list={[{active: home_active}]} aria-current={home_active ? 'page' : false}>home</a></li>
         <li><a href="/about" class:list={[{active: about_active}]} aria-current={about_active ? 'page' : false}>about</a></li>
